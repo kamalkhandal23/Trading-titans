@@ -16,9 +16,11 @@ app.get("/", (req, res) => {
   res.send("Trading Titans API Running");
 });
 
-// DB connect only if URI exists
-if (process.env.MONGO_URI !== "PASTE_LATER") {
+// ✅ Mongo optional for now
+if (process.env.MONGO_URI) {
   connectDB();
+} else {
+  console.log("MongoDB not connected (MONGO_URI not set)");
 }
 
 const PORT = process.env.PORT || 5000;
