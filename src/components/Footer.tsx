@@ -1,82 +1,127 @@
-import { TrendingUp, Youtube, Twitter, Instagram, Linkedin } from 'lucide-react';
+import {
+  TrendingUp,
+  Youtube,
+  Twitter,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
-interface FooterProps {
-  onNavigate: (section: 'home' | 'videos' | 'blog' | 'about') => void;
-}
-
-export function Footer({ onNavigate }: FooterProps) {
+export function Footer() {
   return (
     <footer className="bg-slate-900 text-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          
-          {/* Brand */}
+
+          {/* BRAND */}
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
                 <TrendingUp className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl">Trading Titans</span>
+              <span className="text-xl font-semibold">Trading Titans</span>
             </div>
             <p className="text-slate-400 text-sm">
-              Empowering investors with expert stock market analysis and financial education.
+              Empowering investors with expert stock market analysis,
+              educational blogs, and market insights.
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* QUICK LINKS */}
           <div>
-            <h4 className="mb-4">Quick Links</h4>
+            <h4 className="mb-4 font-semibold">Quick Links</h4>
             <ul className="space-y-2 text-sm text-slate-400">
-
               <li>
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onNavigate("about");     // <-- IMPORTANT
-                  }}
-                  className="hover:text-white transition-colors"
-                >
+                <Link to="/about" className="hover:text-white transition">
                   About Us
-                </a>
+                </Link>
               </li>
-
-              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
+              <li>
+                <Link to="/contact" className="hover:text-white transition">
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="hover:text-white transition">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link to="/videos" className="hover:text-white transition">
+                  Videos
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* LEGAL */}
           <div>
-            <h4 className="mb-4">Resources</h4>
+            <h4 className="mb-4 font-semibold">Legal</h4>
             <ul className="space-y-2 text-sm text-slate-400">
-              <li><a href="#" className="hover:text-white transition-colors">Trading Guide</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Market Analysis</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Investment Tips</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">FAQ</a></li>
+              <li>
+                <Link to="/privacy-policy" className="hover:text-white transition">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/disclaimer" className="hover:text-white transition">
+                  Disclaimer
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms" className="hover:text-white transition">
+                  Terms & Conditions
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Socials */}
+          {/* SOCIAL */}
           <div>
-            <h4 className="mb-4">Connect With Us</h4>
-            <div className="flex gap-4">
-              <Youtube className="w-6 h-6 text-slate-400 hover:text-white transition-colors" />
-              <Twitter className="w-6 h-6 text-slate-400 hover:text-white transition-colors" />
-              <Instagram className="w-6 h-6 text-slate-400 hover:text-white transition-colors" />
-              <Linkedin className="w-6 h-6 text-slate-400 hover:text-white transition-colors" />
+            <h4 className="mb-4 font-semibold">Connect With Us</h4>
+            <div className="flex gap-4 mb-4">
+              <a
+                href="https://www.youtube.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Youtube className="w-6 h-6 text-slate-400 hover:text-white transition" />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Twitter className="w-6 h-6 text-slate-400 hover:text-white transition" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Instagram className="w-6 h-6 text-slate-400 hover:text-white transition" />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Linkedin className="w-6 h-6 text-slate-400 hover:text-white transition" />
+              </a>
             </div>
-            <p className="text-sm text-slate-400 mt-4">
-              Subscribe to our YouTube channel for daily market updates.
+
+            <p className="text-sm text-slate-400">
+              Follow us for daily stock market updates & educational content.
             </p>
           </div>
         </div>
 
-        <div className="border-t border-slate-800 mt-8 pt-8 text-center text-sm text-slate-400">
-          <p>© 2024 Trading Titans. All rights reserved.</p>
+        {/* BOTTOM BAR */}
+        <div className="border-t border-slate-800 mt-10 pt-6 text-center text-sm text-slate-400">
+          <p>© {new Date().getFullYear()} Trading Titans. All rights reserved.</p>
           <p className="mt-2">
-            Disclaimer: Stock market investments are subject to market risks. Please consult with a financial advisor before investing.
+            Disclaimer: Stock market investments are subject to market risks.
+            Please read all related documents carefully before investing.
           </p>
         </div>
       </div>
